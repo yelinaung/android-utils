@@ -23,6 +23,7 @@ import android.app.Activity;
 public class IntentUtils {
 
     Activity mActivity;
+
     public IntentUtils() {
     }
 

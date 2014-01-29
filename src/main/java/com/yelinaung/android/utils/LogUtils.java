@@ -34,7 +34,6 @@ package com.yelinaung.android.utils;
 
 import android.util.Log;
 
-
 /**
  * Created by Ye Lin Aung on 14/01/18.
  */
@@ -42,9 +41,12 @@ import android.util.Log;
 public class LogUtils {
 
     // Define your prefix here
-    private static final String LOG_PREFIX = "";
+    private static String LOG_PREFIX = "";
     private static final int LOG_PREFIX_LENGTH = LOG_PREFIX.length();
     private static final int MAX_LOG_TAG_LENGTH = 23;
+
+    public LogUtils() {
+    }
 
     public static String makeLogTag(String str) {
         if (str.length() > MAX_LOG_TAG_LENGTH - LOG_PREFIX_LENGTH) {
@@ -54,6 +56,11 @@ public class LogUtils {
         }
 
         return LOG_PREFIX + str;
+    }
+
+
+    public static String setPrefix(String prefix) {
+        return LOG_PREFIX = prefix;
     }
 
     public static String makeLogTag(Class<?> cls) {
