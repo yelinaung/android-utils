@@ -4,13 +4,40 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.7.+'
+//        classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.2'
     }
 }
+
+//apply plugin: 'groovy'
 apply plugin: 'android-library'
+//apply plugin: 'nexus'
+
+//dependencies {
+//    repositories {
+//        mavenCentral()
+//    }
+//
+//    compile gradleApi()
+//}
+
+//group = 'com.yelinaung.android.utils'
+//version = '1.0.0-SNAPSHOT'
+//
+//install {
+//    repositories.mavenInstaller {
+//        pom.artifactId = 'android-utils'
+//    }
+//}
+//
+//uploadArchives {
+//    repositories.mavenDeployer {
+//        pom.artifactId = 'android-utils'
+//    }
+//}
 
 android {
     compileSdkVersion 19
-    buildToolsVersion '19.0.0'
+    buildToolsVersion '19.0.1'
 
     sourceSets {
         main {
@@ -20,3 +47,34 @@ android {
         }
     }
 }
+
+//modifyPom {
+//    project {
+//        name 'Android Utils'
+//        description "Some abstract and reusable small utils that can help you in your Android Projects."
+//        url 'https://github.com/yelinaung/android-utils'
+//        inceptionYear '2014'
+//
+//        scm {
+//            url 'https://github.com/yelinaung/android-utils'
+//            connection 'scm:git:git@github.com:yelinaung/android-utils.git'
+//            developerConnection 'scm:git:ssh://git@github.com:yelinaung/android-utils.git'
+//        }
+//
+//        licenses {
+//            license {
+//                name 'The Apache Software License, Version 2.0'
+//                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                distribution 'repo'
+//            }
+//        }
+//
+//        developers {
+//            developer {
+//                id 'jakewharton'
+//                name 'Jake Wharton'
+//                email 'jakewharton@gmail.com'
+//            }
+//        }
+//    }
+//}
