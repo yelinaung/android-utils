@@ -14,13 +14,15 @@ If you don't have that directory, create one.
 Apply the plugin in your `build.gradle`:
 
 ```groovy
+dependencies {
     compile project(':libs:utils')
+}
 ```
 
 In your top level `settings.gradle` :
 
 ```groovy
-    include 'libs:utils'
+    include ':libs:utils'
 ```
 
 To Do
