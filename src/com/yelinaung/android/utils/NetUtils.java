@@ -25,9 +25,17 @@ import android.net.NetworkInfo;
 public class NetUtils {
     // Check the device is connected to the internet
     public static boolean isOnlineOrNot(Context c) {
-        ConnectivityManager cm = (ConnectivityManager) c
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        NetworkInfo netInfo = null;
+        try {
+            ConnectivityManager cm = (ConnectivityManager) c
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+
+
+            netInfo = cm.getActiveNetworkInfo();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 }
