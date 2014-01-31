@@ -34,7 +34,7 @@ public class JSONUtils {
     }
 
     public JSONUtils(Activity mActivity) {
-        this.mActivity= mActivity;
+        this.mActivity = mActivity;
     }
 
     public String toS(JSONObject mJsonObject, String mString) throws JSONException {

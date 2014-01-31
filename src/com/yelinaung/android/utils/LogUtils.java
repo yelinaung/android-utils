@@ -41,7 +41,7 @@ import android.util.Log;
 public class LogUtils {
 
     // Define your prefix here
-    private static String LOG_PREFIX = "";
+    private static String LOG_PREFIX = "utils_";
     private static final int LOG_PREFIX_LENGTH = LOG_PREFIX.length();
     private static final int MAX_LOG_TAG_LENGTH = 23;
 
@@ -54,11 +54,11 @@ public class LogUtils {
                     + str.substring(0, MAX_LOG_TAG_LENGTH - LOG_PREFIX_LENGTH
                     - 1);
         }
-
         return LOG_PREFIX + str;
     }
 
 
+    // TODO You have to specify your own prefix
     public static String setPrefix(String prefix) {
         return LOG_PREFIX = prefix;
     }
@@ -72,64 +72,72 @@ public class LogUtils {
         StackTraceElement[] e = throwable.getStackTrace();
         String c_name = e[1].getMethodName();
 
-
-        if (BuildConfig.DEBUG){
-            Log.i(tag, "[" + c_name + "] " + message);}
-        else if (Log.isLoggable(tag, Log.DEBUG)){
-            Log.i(tag, "[" + c_name + "] " + message);
-        }
-        else{
-            Log.i(tag, "[" + c_name + "] " + message);
+        if (BuildConfig.DEBUG) {
+            Log.d(tag, "[" + c_name + "] " + message);
+        } else if (Log.isLoggable(tag, Log.DEBUG)) {
+            Log.d(tag, "[" + c_name + "] " + message);
+        } else {
+            Log.d(tag, "[" + c_name + "] " + message);
         }
     }
 
     public static void LOGD(final String tag, String message,
                             Throwable throwable) {
-
-
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             Log.d(tag, message, throwable);
-        else if (Log.isLoggable(tag, Log.DEBUG))
+        } else if (Log.isLoggable(tag, Log.DEBUG)) {
             Log.d(tag, message, throwable);
-        else{
+        } else {
             Log.d(tag, message, throwable);
         }
     }
 
     public static void LOGV(final String tag, String message) {
-        if (BuildConfig.DEBUG)
-            Log.v(tag, message);
-        else if (Log.isLoggable(tag, Log.VERBOSE))
-            Log.v(tag, message);
-        else{
-        Log.d(tag, message);
+        Throwable throwable = new Throwable();
+        StackTraceElement[] e = throwable.getStackTrace();
+        String c_name = e[1].getMethodName();
+
+        if (BuildConfig.DEBUG) {
+            Log.v(tag, "[" + c_name + "] " + message);
+        } else if (Log.isLoggable(tag, Log.DEBUG)) {
+            Log.v(tag, "[" + c_name + "] " + message);
+        } else {
+            Log.v(tag, "[" + c_name + "] " + message);
         }
     }
 
     public static void LOGV(final String tag, String message,
                             Throwable throwable) {
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             Log.v(tag, message, throwable);
-        else if (Log.isLoggable(tag, Log.VERBOSE))
+        } else if (Log.isLoggable(tag, Log.VERBOSE)) {
             Log.v(tag, message, throwable);
+        }
     }
 
     public static void LOGI(final String tag, String message) {
-        if (BuildConfig.DEBUG)
-            Log.i(tag, message);
-        else if (Log.isLoggable(tag, Log.VERBOSE))
-            Log.i(tag, message);
-        else
-            Log.i(tag, message);
+        Throwable throwable = new Throwable();
+        StackTraceElement[] e = throwable.getStackTrace();
+        String c_name = e[1].getMethodName();
+
+        if (BuildConfig.DEBUG) {
+            Log.i(tag, "[" + c_name + "] " + message);
+        } else if (Log.isLoggable(tag, Log.DEBUG)) {
+            Log.i(tag, "[" + c_name + "] " + message);
+        } else {
+            Log.i(tag, "[" + c_name + "] " + message);
+        }
     }
 
     public static void LOGI(final String tag, String message,
                             Throwable throwable) {
-        // guess we should also check if it's still in debug mood or not
-        throwable = new Throwable();
-        StackTraceElement[] e = throwable.getStackTrace();
-        String c_name = e[1].getMethodName();
-        Log.i(tag, "[ " + c_name + " ]" + message, throwable);
+        if (BuildConfig.DEBUG) {
+            Log.i(tag, message, throwable);
+        } else if (Log.isLoggable(tag, Log.VERBOSE)) {
+            Log.i(tag, message, throwable);
+        } else {
+            Log.i(tag, message, throwable);
+        }
     }
 
     public static void LOGE(final String tag, String message) {
@@ -137,22 +145,23 @@ public class LogUtils {
         StackTraceElement[] e = throwable.getStackTrace();
         String c_name = e[1].getMethodName();
 
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             Log.e(tag, "[" + c_name + "] " + message);
-        else if (Log.isLoggable(tag, Log.DEBUG))
+        } else if (Log.isLoggable(tag, Log.DEBUG)) {
             Log.e(tag, "[" + c_name + "] " + message);
-        else
+        } else {
             Log.e(tag, "[" + c_name + "] " + message);
+        }
     }
 
     public static void LOGE(final String tag, String message,
                             Throwable throwable) {
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             Log.e(tag, message, throwable);
-        else if (Log.isLoggable(tag, Log.DEBUG))
+        } else if (Log.isLoggable(tag, Log.VERBOSE)) {
             Log.e(tag, message, throwable);
-        else
+        } else {
             Log.e(tag, message, throwable);
-
+        }
     }
 }

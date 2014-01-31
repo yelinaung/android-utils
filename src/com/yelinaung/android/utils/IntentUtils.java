@@ -36,14 +36,14 @@ public class IntentUtils {
     }
 
     public int getIntExtra(String message) {
-        if(message != null) {
+        if (message != null) {
             return mActivity.getIntent().getExtras().getInt(message);
         }
         return 0;
     }
 
     public String getStringExtra(String message) {
-        if(message!= null ){
+        if (message != null) {
             return mActivity.getIntent().getExtras().getString(message);
         }
         return "It's null.";

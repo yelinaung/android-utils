@@ -19,19 +19,26 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
+import static com.yelinaung.android.utils.LogUtils.LOGE;
+import static com.yelinaung.android.utils.LogUtils.makeLogTag;
+
 /**
  * Created by Ye Lin Aung on 14/01/20.
  */
 public class NetUtils {
+
+    static String TAG = makeLogTag(NetUtils.class);
+
     // Check the device is connected to the internet
-    public static boolean isOnlineOrNot(Context c) {
+    public static boolean isOnlineOrNot(Context mContext) {
         NetworkInfo netInfo = null;
         try {
-            ConnectivityManager cm = (ConnectivityManager) c
+            ConnectivityManager cm = (ConnectivityManager) mContext
                     .getSystemService(Context.CONNECTIVITY_SERVICE);
             netInfo = cm.getActiveNetworkInfo();
-        } catch (Exception e) {
+        } catch (SecurityException e) {
             e.printStackTrace();
+            LOGE(TAG, mContext.getString(R.string.missing_internet));
         }
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
