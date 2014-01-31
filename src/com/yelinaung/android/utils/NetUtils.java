@@ -29,10 +29,7 @@ public class NetUtils {
         try {
             ConnectivityManager cm = (ConnectivityManager) c
                     .getSystemService(Context.CONNECTIVITY_SERVICE);
-
-
             netInfo = cm.getActiveNetworkInfo();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
