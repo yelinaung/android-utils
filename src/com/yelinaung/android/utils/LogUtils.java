@@ -72,18 +72,28 @@ public class LogUtils {
         StackTraceElement[] e = throwable.getStackTrace();
         String c_name = e[1].getMethodName();
 
-        if (BuildConfig.DEBUG)
+
+        if (BuildConfig.DEBUG){
+            Log.i(tag, "[" + c_name + "] " + message);}
+        else if (Log.isLoggable(tag, Log.DEBUG)){
             Log.i(tag, "[" + c_name + "] " + message);
-        else if (Log.isLoggable(tag, Log.DEBUG))
+        }
+        else{
             Log.i(tag, "[" + c_name + "] " + message);
+        }
     }
 
     public static void LOGD(final String tag, String message,
                             Throwable throwable) {
+
+
         if (BuildConfig.DEBUG)
             Log.d(tag, message, throwable);
         else if (Log.isLoggable(tag, Log.DEBUG))
             Log.d(tag, message, throwable);
+        else{
+            Log.d(tag, message, throwable);
+        }
     }
 
     public static void LOGV(final String tag, String message) {
@@ -91,6 +101,9 @@ public class LogUtils {
             Log.v(tag, message);
         else if (Log.isLoggable(tag, Log.VERBOSE))
             Log.v(tag, message);
+        else{
+        Log.d(tag, message);
+        }
     }
 
     public static void LOGV(final String tag, String message,
@@ -105,6 +118,8 @@ public class LogUtils {
         if (BuildConfig.DEBUG)
             Log.i(tag, message);
         else if (Log.isLoggable(tag, Log.VERBOSE))
+            Log.i(tag, message);
+        else
             Log.i(tag, message);
     }
 
@@ -126,6 +141,8 @@ public class LogUtils {
             Log.e(tag, "[" + c_name + "] " + message);
         else if (Log.isLoggable(tag, Log.DEBUG))
             Log.e(tag, "[" + c_name + "] " + message);
+        else
+            Log.e(tag, "[" + c_name + "] " + message);
     }
 
     public static void LOGE(final String tag, String message,
@@ -134,5 +151,8 @@ public class LogUtils {
             Log.e(tag, message, throwable);
         else if (Log.isLoggable(tag, Log.DEBUG))
             Log.e(tag, message, throwable);
+        else
+            Log.e(tag, message, throwable);
+
     }
 }
