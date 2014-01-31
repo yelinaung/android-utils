@@ -78,8 +78,7 @@ public class LogUtils {
         else if (Log.isLoggable(tag, Log.DEBUG)){
             Log.i(tag, "[" + c_name + "] " + message);
         }
-        else
-        {
+        else{
             Log.i(tag, "[" + c_name + "] " + message);
         }
     }
@@ -92,8 +91,7 @@ public class LogUtils {
             Log.d(tag, message, throwable);
         else if (Log.isLoggable(tag, Log.DEBUG))
             Log.d(tag, message, throwable);
-        else
-        {
+        else{
             Log.d(tag, message, throwable);
         }
     }
@@ -134,7 +132,7 @@ public class LogUtils {
         Log.i(tag, "[ " + c_name + " ]" + message, throwable);
     }
 
-    public  static  void LOGE(final String tag, String message) {
+    public static void LOGE(final String tag, String message) {
         Throwable throwable = new Throwable();
         StackTraceElement[] e = throwable.getStackTrace();
         String c_name = e[1].getMethodName();
