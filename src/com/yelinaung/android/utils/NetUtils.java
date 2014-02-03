@@ -60,12 +60,12 @@ public class NetUtils {
             try {
             HttpGet httpGet = new HttpGet(weburl[0].toString());
             HttpClient client = new DefaultHttpClient();
-            try {
-                HttpResponse response = client.execute(httpGet);
-                httpResponse = response.getStatusLine().getStatusCode();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                try {
+                        HttpResponse response = client.execute(httpGet);
+                        httpResponse = response.getStatusLine().getStatusCode();
+                    } catch (IOException e) {
+                         e.printStackTrace();
+                    }
             }catch (SecurityException se){
                 se.printStackTrace();
             }
