@@ -18,6 +18,14 @@ package com.yelinaung.android.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import java.io.IOException;
 
 import static com.yelinaung.android.utils.LogUtils.LOGE;
 import static com.yelinaung.android.utils.LogUtils.makeLogTag;
@@ -41,5 +49,34 @@ public class NetUtils {
             LOGE(TAG, mContext.getString(R.string.missing_internet));
         }
         return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+
+    public static void getStatus(String weburl)
+    {
+            new checkWebStatus().execute(weburl);
+    }
+
+    //Check the website http response code no
+   private static class checkWebStatus extends AsyncTask<String,Void,String>
+    {
+
+        @Override
+        protected String doInBackground(String... weburl) {
+            Integer httpResponse = 0;
+            try {
+            HttpGet httpGet = new HttpGet(weburl[0].toString());
+            HttpClient client = new DefaultHttpClient();
+                try {
+                        HttpResponse response = client.execute(httpGet);
+                        httpResponse = response.getStatusLine().getStatusCode();
+                    } catch (IOException e) {
+                         e.printStackTrace();
+                    }
+            }catch (SecurityException se){
+                se.printStackTrace();
+            }
+            return httpResponse.toString();
+        }
     }
 }
