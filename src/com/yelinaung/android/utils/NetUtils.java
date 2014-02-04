@@ -52,28 +52,26 @@ public class NetUtils {
     }
 
 
-    public static void getStatus(String weburl)
-    {
-            new checkWebStatus().execute(weburl);
+    public static void getStatus(String weburl) {
+        new checkWebStatus().execute(weburl);
     }
 
     //Check the website http response code no
-   private static class checkWebStatus extends AsyncTask<String,Void,String>
-    {
+    private static class checkWebStatus extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... weburl) {
             Integer httpResponse = 0;
             try {
-            HttpGet httpGet = new HttpGet(weburl[0].toString());
-            HttpClient client = new DefaultHttpClient();
+                HttpGet httpGet = new HttpGet(weburl[0]);
+                HttpClient client = new DefaultHttpClient();
                 try {
-                        HttpResponse response = client.execute(httpGet);
-                        httpResponse = response.getStatusLine().getStatusCode();
-                    } catch (IOException e) {
-                         e.printStackTrace();
-                    }
-            }catch (SecurityException se){
+                    HttpResponse response = client.execute(httpGet);
+                    httpResponse = response.getStatusLine().getStatusCode();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (SecurityException se) {
                 se.printStackTrace();
             }
             return httpResponse.toString();
