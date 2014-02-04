@@ -22,10 +22,15 @@ import android.os.AsyncTask;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.yelinaung.android.utils.LogUtils.LOGE;
 import static com.yelinaung.android.utils.LogUtils.makeLogTag;
@@ -52,27 +57,60 @@ public class NetUtils {
     }
 
 
-    public static void getStatus(String weburl)
+    public static void getStatus(String weburl, String ways)
     {
-            new checkWebStatus().execute(weburl);
+        try{
+            List<String> httpWays= new ArrayList<String>();
+            httpWays.add(ways.toUpperCase());
+            httpWays.add(weburl);
+            new checkWebStatus().execute(httpWays);
+        }catch (NullPointerException ne){
+            ne.printStackTrace();
+        }
+
     }
 
     //Check the website http response code no
-   private static class checkWebStatus extends AsyncTask<String,Void,String>
+   private static class checkWebStatus extends AsyncTask<List<String>,Void,String>
     {
 
         @Override
-        protected String doInBackground(String... weburl) {
+        protected String doInBackground(List<String >...weburl) {
             Integer httpResponse = 0;
-            try {
-            HttpGet httpGet = new HttpGet(weburl[0].toString());
             HttpClient client = new DefaultHttpClient();
+            HttpResponse response = null;
+
+            try {
+                if(weburl[0].get(0).toString().equals("POST")){
+                HttpPost httptype = new HttpPost(weburl[0].get(1).toString());
                 try {
-                        HttpResponse response = client.execute(httpGet);
-                        httpResponse = response.getStatusLine().getStatusCode();
-                    } catch (IOException e) {
-                         e.printStackTrace();
-                    }
+                    response = client.execute(httptype);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else if(weburl[0].get(0).toString().equals("GET")){
+                HttpGet httptype = new HttpGet(weburl[0].get(1).toString());
+                try {
+                    response = client.execute(httptype);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else if(weburl[0].get(0).toString().equals("PUT")){
+                HttpPut httptype = new HttpPut(weburl[0].get(1).toString());
+                try {
+                    response = client.execute(httptype);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }else {
+                HttpDelete httptype = new HttpDelete(weburl[0].get(1).toString());
+                try {
+                    response = client.execute(httptype);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+                httpResponse = response.getStatusLine().getStatusCode();
             }catch (SecurityException se){
                 se.printStackTrace();
             }
