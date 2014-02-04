@@ -4,6 +4,10 @@ Android Utils
 Some abstract and reusable small utils that can help you in your Android Projects.
 Please take a look and send some pull requests or issues to me.
 
+Note
+----
+This project is currently experimental, under heavy changes and the code base may change dramatically.
+
 Usage
 -----
 
@@ -15,14 +19,14 @@ Apply the plugin in your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile project(':libs:utils')
+    compile project(':libs:utils:library')
 }
 ```
 
 In your top level `settings.gradle` :
 
 ```groovy
-    include ':libs:utils'
+include ':libs:utils:library'
 ```
 
 To Do
