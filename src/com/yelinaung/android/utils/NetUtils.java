@@ -74,7 +74,7 @@ public class NetUtils {
             HttpResponse response = null;
 
             try {
-            if(weburl[0].get(0).toString().equals("POST")){
+                if(weburl[0].get(0).toString().equals("POST")){
                 HttpPost httptype = new HttpPost(weburl[0].get(1).toString());
                 try {
                     response = client.execute(httptype);
@@ -103,9 +103,7 @@ public class NetUtils {
                     e.printStackTrace();
                 }
             }
-
                 httpResponse = response.getStatusLine().getStatusCode();
-
             }catch (SecurityException se){
                 se.printStackTrace();
             }
