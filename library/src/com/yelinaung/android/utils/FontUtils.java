@@ -8,9 +8,9 @@ import java.util.regex.Pattern;
  */
 public class FontUtils {
 
-    public boolean checkMMFont(String s) {
+    public static boolean checkMMFont(String s) {
         Pattern p = Pattern.compile("[^\\u0000-\\u0080]+");
-        Matcher matcher6 = p.matcher(s);
-        return matcher6.find();
+        Matcher matcher = p.matcher(s);
+        return matcher.find();
     }
 }
