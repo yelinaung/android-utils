@@ -64,18 +64,15 @@ public class DateUtils {
         cal.setTime(thenDate);
         //example MFormat = EEEE:MM:yyyy
         SimpleDateFormat df = new SimpleDateFormat(mFormat, Locale.ENGLISH);
-        Log.e("df",df.format(cal.getTime()));
+        Log.e("df", df.format(cal.getTime()));
         return df.format(cal.getTime());
     }
 
-    public static String StringToDate(String mFormat , String thenDate) throws ParseException {
+    public static String StringToDate(String mFormat, String thenDate) throws ParseException {
 
         SimpleDateFormat formatter = new SimpleDateFormat(mFormat);
         Date date = formatter.parse(thenDate);
-
-
-    Log.e("Date",formatter.format(date).toString());
-    return formatter.format(date).toString();
+        return formatter.format(date).toString();
     }
 
 }
