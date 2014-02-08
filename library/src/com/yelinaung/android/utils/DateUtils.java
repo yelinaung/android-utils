@@ -1,5 +1,7 @@
 package com.yelinaung.android.utils;
 
+import android.util.Log;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -48,20 +50,32 @@ public class DateUtils {
                 return diffDays + " D";
             } else {
 
-                return now_d(thenDate).toString();
+                return thenDate.toString();
             }
         } else {
-            return now_d(thenDate).toString();
+            return thenDate.toString();
 
         }
     }
 
-    public static String DateToString(Date thenDate, mFormat) {
+    public static String DateToString(String mFormat, Date thenDate) {
         Calendar cal = Calendar.getInstance();
+
         cal.setTime(thenDate);
         //example MFormat = EEEE:MM:yyyy
         SimpleDateFormat df = new SimpleDateFormat(mFormat, Locale.ENGLISH);
+        Log.e("df",df.format(cal.getTime()));
         return df.format(cal.getTime());
+    }
+
+    public static String StringToDate(String mFormat , String thenDate) throws ParseException {
+
+        SimpleDateFormat formatter = new SimpleDateFormat(mFormat);
+        Date date = formatter.parse(thenDate);
+
+
+    Log.e("Date",formatter.format(date).toString());
+    return formatter.format(date).toString();
     }
 
 }
