@@ -1,6 +1,19 @@
-package com.yelinaung.android.utils;
+/*
+ * Copyright (c) 2014. Ye Lin Aung
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
 
-import android.util.Log;
+package com.yelinaung.android.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,8 +21,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import static com.yelinaung.android.utils.LogUtils.LOGE;
+import static com.yelinaung.android.utils.LogUtils.makeLogTag;
 
 public class DateUtils {
+
+    private static String TAG = makeLogTag(DateUtils.class);
 
     public static String getDateDifference(Date thenDate) throws ParseException {
         long diff;
@@ -64,7 +81,7 @@ public class DateUtils {
         cal.setTime(thenDate);
         //example MFormat = EEEE:MM:yyyy
         SimpleDateFormat df = new SimpleDateFormat(mFormat, Locale.ENGLISH);
-        Log.e("df", df.format(cal.getTime()));
+        LOGE(TAG, "format → " + df.format(cal.getTime()));
         return df.format(cal.getTime());
     }
 
@@ -72,7 +89,7 @@ public class DateUtils {
 
         SimpleDateFormat formatter = new SimpleDateFormat(mFormat);
         Date date = formatter.parse(thenDate);
-        return formatter.format(date).toString();
+        return formatter.format(date);
     }
 
 }

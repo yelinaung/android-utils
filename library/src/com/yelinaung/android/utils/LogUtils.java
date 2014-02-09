@@ -41,11 +41,16 @@ import android.util.Log;
 public class LogUtils {
 
     // Define your prefix here
-    private static String LOG_PREFIX = "utils_";
+    private static String LOG_PREFIX;
     private static final int LOG_PREFIX_LENGTH = LOG_PREFIX.length();
     private static final int MAX_LOG_TAG_LENGTH = 23;
 
     public LogUtils() {
+    }
+
+    // TODO You have to specify your own prefix
+    public static String setPrefix(String prefix) {
+        return LOG_PREFIX = prefix;
     }
 
     public static String makeLogTag(String str) {
@@ -55,12 +60,6 @@ public class LogUtils {
                     - 1);
         }
         return LOG_PREFIX + str;
-    }
-
-
-    // TODO You have to specify your own prefix
-    public static String setPrefix(String prefix) {
-        return LOG_PREFIX = prefix;
     }
 
     public static String makeLogTag(Class<?> cls) {
