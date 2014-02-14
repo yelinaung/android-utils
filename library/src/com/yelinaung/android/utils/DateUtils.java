@@ -81,7 +81,6 @@ public class DateUtils {
         cal.setTime(thenDate);
         //example MFormat = EEEE:MM:yyyy
         SimpleDateFormat df = new SimpleDateFormat(mFormat, Locale.ENGLISH);
-        LOGE(TAG, "format → " + df.format(cal.getTime()));
         return df.format(cal.getTime());
     }
 
