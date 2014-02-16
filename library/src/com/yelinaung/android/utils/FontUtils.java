@@ -15,6 +15,10 @@
 
 package com.yelinaung.android.utils;
 
+import android.content.Context;
+import android.graphics.Typeface;
+import android.widget.TextView;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -27,5 +31,35 @@ public class FontUtils {
         Pattern p = Pattern.compile("[^\\u0000-\\u0080]+");
         Matcher matcher = p.matcher(s);
         return matcher.find();
+    }
+
+    public static void setRobotoLight(Context mContext, TextView tv) {
+        Typeface font = Typeface.createFromAsset(mContext.getAssets(),
+                "font/Roboto-Light.ttf");
+        tv.setTypeface(font);
+    }
+
+    public static void setRobotoCondense(Context mContext, TextView tv) {
+        Typeface font = Typeface.createFromAsset(mContext.getAssets(),
+                "font/RobotoCondensed-Regular.ttf");
+        tv.setTypeface(font);
+    }
+
+    public static void setRoboto(Context mContext, TextView tv) {
+        Typeface font = Typeface.createFromAsset(mContext.getAssets(),
+                "font/Roboto-Regular.ttf");
+        tv.setTypeface(font);
+    }
+
+    public static void setRobotoMedium(Context mContext, TextView tv) {
+        Typeface font = Typeface.createFromAsset(mContext.getAssets(),
+                "font/Roboto-Medium.ttf");
+        tv.setTypeface(font);
+    }
+
+    public static void setRobotoCondenseBold(Context mContext, TextView tv) {
+        Typeface font = Typeface.createFromAsset(mContext.getAssets(),
+                "font/RobotoCondensed-Bold.ttf");
+        tv.setTypeface(font);
     }
 }
