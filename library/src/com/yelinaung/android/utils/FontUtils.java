@@ -35,31 +35,31 @@ public class FontUtils {
 
     public static void setRobotoLight(Context mContext, TextView tv) {
         Typeface font = Typeface.createFromAsset(mContext.getAssets(),
-                "font/Roboto-Light.ttf");
+                "fonts/Roboto-Light.ttf");
         tv.setTypeface(font);
     }
 
     public static void setRobotoCondense(Context mContext, TextView tv) {
         Typeface font = Typeface.createFromAsset(mContext.getAssets(),
-                "font/RobotoCondensed-Regular.ttf");
+                "fonts/RobotoCondensed-Regular.ttf");
         tv.setTypeface(font);
     }
 
     public static void setRoboto(Context mContext, TextView tv) {
         Typeface font = Typeface.createFromAsset(mContext.getAssets(),
-                "font/Roboto-Regular.ttf");
+                "fonts/Roboto-Regular.ttf");
         tv.setTypeface(font);
     }
 
     public static void setRobotoMedium(Context mContext, TextView tv) {
         Typeface font = Typeface.createFromAsset(mContext.getAssets(),
-                "font/Roboto-Medium.ttf");
+                "fonts/Roboto-Medium.ttf");
         tv.setTypeface(font);
     }
 
     public static void setRobotoCondenseBold(Context mContext, TextView tv) {
         Typeface font = Typeface.createFromAsset(mContext.getAssets(),
-                "font/RobotoCondensed-Bold.ttf");
+                "fonts/RobotoCondensed-Bold.ttf");
         tv.setTypeface(font);
     }
 }
